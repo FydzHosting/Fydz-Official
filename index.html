@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Saya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #555;
+      max-width: 600px;
+      margin: 10px auto 30px;
+    }
+    video {
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selamat Datang di Web Saya</h1>
+  <p><b>By Fydz Official</b></p>
+  
+  <video id="myVideo" autoplay muted loop playsinline>
+    <source src="myVideo/material.mp4" type="video/mp4">
+    Browser kamu tidak mendukung pemutar video.
+  </video>
+
+  <br>
+  <button id="playWithSound">Putar dengan Suara & Fullscreen</button>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    const btn = document.getElementById("playWithSound");
+
+    btn.addEventListener("click", async () => {
+      try {
+        // Unmute video
+        video.muted = false;
+
+        // Masuk fullscreen
+        if (video.requestFullscreen) {
+          await video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          await video.webkitRequestFullscreen();
+        }
+
+        // Play video
+        await video.play();
+      } catch (e) {
+        console.log("Error:", e);
+      }
+    });
+  </script>
+</body>
+</html>
